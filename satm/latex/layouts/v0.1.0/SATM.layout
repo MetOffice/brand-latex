@@ -1,0 +1,6 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[/home/h05/fra6/.lyx/layouts/satm/v0.1.0/SATM_article]{Memo SATM 0.1.0}
+
+# Read the definitions from article.layout
+Input article.layout
+

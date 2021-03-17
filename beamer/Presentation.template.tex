@@ -1,0 +1,282 @@
+%% Met Office beamer template
+%% For 4:3 set aspectratio=49
+%% For 16:9 set aspectratio=169
+\documentclass[11pt,aspectratio=169]{beamer}  % 16:9 spect
+% \documentclass[11pt,aspectratio=49]{beamer}  % 4:3 aspect
+
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[T1]{fontenc}
+%% OR change font to get close to Arial
+% \usepackage[scaled]{helvet}
+% \renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[absolute,overlay]{textpos}
+%% Units of \paperwidth used by textblock
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+\setlength{\parindent}{0mm}
+
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{metomacros}
+\usepackage{tipa}  % phonetics
+% \usepackage[utf8]{inputenc}
+% \usepackage{unixode}
+% \usepackage{minted}
+
+%% Overlays a grid.
+%% Useful for positioning.
+%% Comment out when creating the final version
+% \usepackage[texcoord,grid,gridunit=mm,gridcolor=red!10,subgridcolor=green!10]{eso-pic}
+
+
+%% Met Office logo on slides
+\logo{\includegraphics[trim=2cm 3cm 1.4cm 0, width=1cm]{%
+  \ImageDir/MO_black_mono_for_light_backg_RBG.png}}
+
+%% Define Met Office colours
+\definecolor{autumn_orange}{HTML}{E47452}
+\definecolor{core_black}{HTML}{2A2A2A}
+\definecolor{core_green}{HTML}{B9DC0C}
+\definecolor{core_white}{HTML}{FFFFFF}
+\definecolor{deep_green}{HTML}{878800}  % deprecated?
+\definecolor{light_red}{HTML}{FFBBBB}
+\definecolor{deep_blue}{HTML}{031F73}  % deprecated?
+\definecolor{spring_green}{HTML}{50B9A4}
+\definecolor{summer_blue}{HTML}{007AA9}
+\definecolor{winter_grey}{HTML}{A1A0AA}
+\definecolor{cmd}{HTML}{DE00DE}
+\newcommand*{\escape}[1]{\textbackslash#1}
+\newcommand{\command}[1]{\colorbox{blue!20}{\texttt{\scriptsize#1}}}
+
+%% Link colouring
+\hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta,urlcolor=cyan,}
+
+%% Code syntax colouring
+\usepackage{listings}
+\lstset{%
+  language=bash,
+  aboveskip=-10pt,
+  backgroundcolor=, basicstyle=\scriptsize\ttfamily,
+  breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  breakautoindent=true,breakindent=5pt, breakatwhitespace=true,
+  frame=tb, rulecolor=\color{gray}, showspaces=false, showtabs=false,
+  numbers=none, numbersep=2pt, numberstyle=\ttfamily\tiny\color{gray},
+  showstringspaces=false, tabsize=2, keywordstyle=\ttfamily, title=\lstname,
+  emph={module},
+  emphstyle={\color{blue}\bfseries},
+  keywordstyle=\color{blue},
+  stringstyle=\color{spring_green},
+  commentstyle={\color{winter_grey}},
+  escapeinside={(*@}{@*)},
+}
+
+%% (Optional) YAML code highlighting ------------------------------------------
+\newcommand\YAMLcolonstyle{\color{red}\ttfamily\tiny}
+\newcommand\YAMLkeystyle{\color{black}\ttfamily\tiny}
+\newcommand\YAMLvaluestyle{\color{blue}\ttfamily\tiny}
+
+\makeatletter
+
+% here is a macro expanding to the name of the language
+% (handy if you decide to change it further down the road)
+\newcommand\language@yaml{yaml}
+
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{darkgray}\bfseries,
+  basicstyle=\YAMLkeystyle,  % assuming a key comes first
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\YAMLvaluestyle\ttfamily,
+  moredelim=[l][\color{orange}]{\&},
+  moredelim=[l][\color{magenta}]{*},
+  moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},  % switch to value style at :
+  morestring=[b]',
+  morestring=[b]",
+  literate =    {---}{{\ProcessThreeDashes}}3
+                {>}{{\textcolor{red}\textgreater}}1
+                {|}{{\textcolor{red}\textbar}}1
+                {\ -\ }{{\mdseries\ -\ }}3,
+}
+
+% switch to key style at EOL
+\lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
+\makeatother
+
+\newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
+% -----------------------------------------------------------------------------
+
+\usetheme{Boadilla}
+% \usetheme{Madrid}
+% \usecolortheme{seahorse}
+
+\setbeamercolor{frametitle}{bg=core_green, fg=core_black}
+\setbeamercolor{section in head/foot}{bg=core_green}
+\setbeamercolor{author in head/foot}{bg=winter_grey}
+\setbeamercolor{date in head/foot}{bg=winter_grey, fg=core_black}
+\setbeamercolor{title in head/foot}{bg=core_green, fg=core_black}
+\setbeamercolor{item}{fg=core_green}
+\setbeamercolor{item projected}{fg=core_black}
+\setbeamercolor{alerted text}{fg=deep_blue}
+\setbeamercolor{normal text}{fg=core_black}
+\setbeamercolor{block title alerted}{fg=red,bg=light_red}
+
+\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+% -----------------------------------------------------------------------------
+%% Define title, author, date etc.
+\title[short title]{\textcolor{core_green}{\Large Long Title}}
+\author[A. Name]{\textcolor{white}{\small Author Name}}
+\institute[Grp Name]{\textcolor{white}{\scriptsize Group Name}}
+\date{\textcolor{white}{\tiny dd Mon Year}}
+% \date{\textcolor{white}{\today}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+% \maketitle
+%% Met Office template style for title page
+\usebackgroundtemplate{%
+  \includegraphics[width=1.\paperwidth,height=1.\paperheight]{%
+  \ImageDir/cover.jpg}
+}
+
+{
+  \begin{frame}[noframenumbering,plain]
+    \TPGrid{100}{100}
+    \begin{textblock}{4.5}(0,0)
+      \includegraphics[width=4cm]{\ImageDir/MO_colour_for_dark_backg_RBG.png}
+    \end{textblock}
+
+    \begin{textblock}{90}(6,30)
+      \inserttitle\\  % title
+      \vspace{7.5mm}
+      \insertauthor\\  % author short
+      \insertinstitute\\  % institution short
+      \vspace{25mm}
+      {\textcolor{white}{\tiny Meeting Name,}}  % meeting name
+      \insertdate  % date
+    \end{textblock}
+  \end{frame}
+}
+
+
+%% - Contents
+% \begin{frame}{Overview}
+% \tableofcontents
+% \end{frame}
+\usebackgroundtemplate{}
+\begin{frame}{f1}
+  \frametitle{Contents}\tableofcontents
+\end{frame}
+
+
+\section{Section 1: Items}  % will appear in contents slide ===================
+
+\begin{frame}\frametitle{Bullet Frame}  % -----------------------------------
+  \begin{itemize}
+    \item Bullet item
+    \begin{itemize}
+      \item Sub-item
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Numbered Frame}  % -----------------------------------
+  \begin{enumerate}
+    \item Numbered item
+    \begin{enumerate}
+      \item Sub-item
+    \end{enumerate}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{Overlay Frame}  % -----------------------------------
+  \begin{enumerate}[<+->]
+    \item First item
+    \begin{itemize}
+      \item Sub-item 1
+      \item Sub-item 2
+    \end{itemize}
+    \item Second item
+    \begin{itemize}
+      \item Sub-item
+    \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+
+
+%% Divider
+\rippledivider{\LARGE{Water break}}
+
+
+
+\section{Section 2: columns}  % ===============================================
+\begin{frame}\frametitle{2-column [60|40] Frame}  % ---------------------------
+  \begin{columns}
+
+    \begin{column}{0.6\textwidth}
+    Left column with 60\% of text-width
+    \end{column}
+
+    \begin{column}{0.4\textwidth}
+      Right column with 40\% of text-width
+    \end{column}
+
+    \end{columns}
+\end{frame}
+
+
+
+%% Divider
+\greendivider{\LARGE{Green Tea break}}
+
+
+
+\section{Section 3: Listings}  % ==============================================
+\begin{frame}[fragile]\frametitle{Code highlighting}  % -----------------------
+
+  \begin{lstlisting}[basicstyle=\small\ttfamily,numbers=left,language=bash]
+    # This block was written using lstlisting for bash language
+    echo "Hello World!"
+  \end{lstlisting}
+
+  \command{But I was written using \escape{}command\{\} macro}
+\end{frame}
+
+
+
+%% Final slide - Use only one
+
+\finalslideblack{%  ===========================================================
+  \LARGE{Questions?}\\
+  \hfill \break
+  \small{\texttt{\href{mailto:e.mail@metoffice.gov.uk}{e.mail@metoffice.gov.uk}}
+  }
+}
+
+\finalslidegrey{%  ============================================================
+  \LARGE{Questions?}\\
+  \hfill \break
+  \small{\texttt{\href{mailto:e.mail@metoffice.gov.uk}{e.mail@metoffice.gov.uk}}
+  }
+}
+
+\finalslidegreen{%  ===========================================================
+  \LARGE{Questions?}\\
+  \hfill \break
+  \small{\texttt{\href{mailto:e.mail@metoffice.gov.uk}{e.mail@metoffice.gov.uk}}
+  }
+}
+
+\end{document}

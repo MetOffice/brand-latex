@@ -1,0 +1,15 @@
+Install SATM LaTeX class
+========================
+
+$ [module use /project/SatImagery/utils/modulefiles]
+$ module load satools
+$ cd ~
+$ install_satm_latex_class
+
+The command should:
+- Install SATM class file in ~/texmf/tex/latex
+- Create a link to SATM layout file in ~/.lyx/layouts
+- Add some templates in current working directory (or HOME)
+
+LyX usera may need to reconfigure for the new class to be picked up.
+

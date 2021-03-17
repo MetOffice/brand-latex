@@ -1,0 +1,145 @@
+%% A bunch of macros to help with MetO Beamer template
+%% Contributors: Yaswant Pradhan, Omar Jamil
+
+\ProvidesPackage{metomacros}[2018/04/10 v1.0 MetO Beamer Macros]
+\newcommand\ImageDir{/project/SatImagery/utils/brand/beamer/images}
+\usetikzlibrary{backgrounds,calc}  % for adding logo on last slide
+
+\newcommand{\rippledivider}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-ripple.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{200}(20,40)
+\textcolor{core_green}{\Large #1}
+\end{textblock}
+\end{frame}
+}
+\usebackgroundtemplate{}}
+
+%% Teal divider
+\newcommand{\tealdivider}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-teal.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{200}(20,40)
+\textcolor{core_black}{\Large #1}
+\end{textblock}
+\end{frame}
+}
+\usebackgroundtemplate{}}
+
+%% Orange divider
+\newcommand{\orangedivider}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-orange.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{200}(20,40)
+\textcolor{core_black}{\Large #1}
+\end{textblock}
+\end{frame}
+}
+\usebackgroundtemplate{}}
+
+%% Green divider
+\newcommand{\greendivider}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-green.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{200}(20,40)
+\textcolor{core_black}{\Large #1}
+\end{textblock}
+\end{frame}
+}
+\usebackgroundtemplate{}}
+
+%% Grey divider
+\newcommand{\greydivider}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-grey.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{200}(20,40)
+\textcolor{core_black}{\Large #1}
+\end{textblock}
+\end{frame}
+}
+\usebackgroundtemplate{}}
+
+%% \newcommand{\endslideripple}[1]{
+%% \usebackgroundtemplate{%
+%% \includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-ripple2.jpg}}
+%% {
+%% \setbeamertemplate{logo}{}
+%% \begin{frame}[noframenumbering,plain]
+%% \begin{textblock}{200}(10,20)
+%% \textcolor{core_green}{\large #1}
+%% \end{textblock}
+%% \end{frame}
+%% }}
+
+\newcommand{\finalslidegreen}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-green.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{100}(20,40)
+\textcolor{core_black}{\large #1}
+\end{textblock}
+%% Logo at bottom right (requires tikzlibrary)
+\begin{tikzpicture}[remember picture,overlay]
+\begin{pgfonlayer}{background}
+  \node[anchor=south east,outer sep=0pt,inner sep=0pt] at ($(current page.south east) +(0in,0in)$) {\includegraphics[keepaspectratio,width=0.3\textwidth]{\ImageDir/MO_black_mono_for_light_backg_RBG.png}};
+\end{pgfonlayer}
+\end{tikzpicture}
+
+\end{frame}
+}}
+
+\newcommand{\finalslideblack}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-black.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{100}(20,40)
+\textcolor{core_white}{\large #1}
+\end{textblock}
+%% Logo at bottom right
+\begin{tikzpicture}[remember picture,overlay]
+\begin{pgfonlayer}{background}
+  \node[anchor=south east,outer sep=0pt,inner sep=0pt] at ($(current page.south east) +(0in,0in)$) {\includegraphics[keepaspectratio,width=0.3\textwidth]{\ImageDir/MO_colour_for_dark_backg_RBG.png}};
+\end{pgfonlayer}
+\end{tikzpicture}
+
+\end{frame}
+}}
+
+\newcommand{\finalslidegrey}[1]{
+\usebackgroundtemplate{%
+\includegraphics[width=1.\paperwidth,height=1.\paperheight]{\ImageDir/4320x3240-grey.jpg}}
+{
+\setbeamertemplate{logo}{}
+\begin{frame}[noframenumbering,plain]
+\begin{textblock}{100}(20,40)
+\textcolor{core_white}{\large #1}
+\end{textblock}
+%% Logo at bottom right
+\begin{tikzpicture}[remember picture,overlay]
+\begin{pgfonlayer}{background}
+  \node[anchor=south east,outer sep=0pt,inner sep=0pt] at ($(current page.south east) +(0in,0in)$) {\includegraphics[keepaspectratio,width=0.3\textwidth]{\ImageDir/MO_colour_for_dark_backg_RBG.png}};
+\end{pgfonlayer}
+\end{tikzpicture}
+
+\end{frame}
+}}
+\endinput
