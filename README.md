@@ -36,6 +36,5 @@ teshash ~/texmf
 
 
 > **Note**
-> New SharePoint location for Met Office Logos
-> [Met Office Logos](https://metoffice.sharepoint.com/:f:/r/sites/MetOfficeBrandExperienceHubExt/External%20Documents/Brand%20templates/Logos?csf=1&web=1&e=I0Nb8d)
+> New SharePoint location for [Met Office Logos](https://metoffice.sharepoint.com/:f:/r/sites/MetOfficeBrandExperienceHubExt/External%20Documents/Brand%20templates/Logos?csf=1&web=1&e=I0Nb8d)
 
