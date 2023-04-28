@@ -1,0 +1,66 @@
+% Met Office Memo.
+%
+% Preamble options:
+%
+%   documentclass[]:
+%       green - adds green banner (default is black when this option is omited)
+%               No effect on Memo.
+%       hadley - use Hadley Centre logos instead of standard logos.
+%       print - inserts a blank page after the cover page and, if the page
+%               count is uneven, another blank page before the closing page,
+%               for better printing.  No effect on Memo.
+%
+%   marking{} (one of the following):
+%       NO MARKING - default implies OFFICIAL
+%       DRAFT - draft document
+%       OFFICIAL - official document
+%       SENSITIVE - sensitive document
+%
+% Custom branded color names:
+%   core_green, core_black, spring_green, summer_blue, autumn_orange, and
+%   winter_grey
+%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{MO_memo}
+
+\title{Title}
+\author{An Author}
+% \date{25 Dec 2020}                        % custom date
+\marking{DRAFT}                           % document marking
+
+\usepackage[utf8]{inputenc}
+\usepackage[colorlinks, %
+            linkcolor=blue, %
+            urlcolor=autumn_orange, %
+            citecolor=summer_blue, %
+            bookmarks=false, %
+            hypertexnames=true]{hyperref}   % colored links
+\usepackage{apacite}                        % always after loading hyperref
+
+
+% Begin document
+% ==========================================================
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+
+% Body
+% ==========================================================
+\section{Introduction}
+Example reference \cite{Group2018}.
+
+\subsection{Subsection}
+
+
+
+% References from external bibliography (e.g. reference.bib)
+% ==========================================================
+\newpage
+\bibliographystyle{apacite}
+\bibliography{/home/h05/fra6/Bibliography/reference}
+
+
+\end{document}
